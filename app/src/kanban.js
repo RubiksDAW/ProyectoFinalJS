@@ -11,13 +11,13 @@ export default class Kanban {
     add(board) {
         this.boards.push(board)
     }
+    
+    getBoard(index) {
+       return this.boards[index];
+    }
 
     addCard(card, indexBoard) {
         this.getBoard(indexBoard).add(card);
-    }
-
-    getBoard(index) {
-        this.boards[index]
     }
 
     getIndex(id) {
@@ -34,21 +34,21 @@ export default class Kanban {
 
     }
 
-    moveCard(indexBoardSrc, indexCardSrc, indexBoardTarget, indexCardTarget){
+    moveCard(indexBoardSrc, indexCardSrc, indexBoardTarget, indexCardTarget) {
         const srcCard = this.removeCard(indexBoardSrc, indexCardSrc)
         this.insertCard(srcCard, indexBoardTarget, indexCardTarget)
     }
 
-    updateBoard(id, index, title){
+    updateBoard(id, index, title) {
         this.getBoard(index).title = title;
     }
 
-    removeBoard(index){
+    removeBoard(index) {
         const id = this.boards[index].id;
         this.boards.splice(index, 1)
     }
 
-    updateCard(indexBoard, indexCard, title){
+    updateCard(indexBoard, indexCard, title) {
         const card = this.boards[indexBoard].items[indexCard]
         card.title = title;
     }
